@@ -23,4 +23,5 @@ func TestGenerateTree(t *testing.T) {
 
 	assert.IsType(t, &nmn.NodeTree{}, tree)
 	assert.Len(t, tree.Nodes, 6)
+	assert.Len(t, tree.Nodes["node1"].Edges, 1)
 }
