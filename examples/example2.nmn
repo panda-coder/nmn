@@ -1,0 +1,6 @@
+version: 0.1
+nodes:
+- id: 'node2'
+  name: 'NodeExample'
+- id: 'node3'
+  name: 'NodeExample'
