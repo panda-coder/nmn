@@ -3,11 +3,11 @@
 # Exemplo 
 ```yaml
 version: 0.1
-    additional_files:
-        - example2.nmn
-    nodes:
-        - id: 'node1'
-          name: 'NodeExample'
+add:
+- "example2.nmn"
+nodes:
+- id: 'node1'
+  name: 'NodeExample'
 ```
 
 ## Contributors
