@@ -8,25 +8,36 @@ type NodeMapping struct {
 	Files FileCollection
 }
 
-func LoadMapping(path string) (*NodeMapping, error) {
-	files := make(FileCollection, 0)
+func (nm *NodeMapping) LoadMapping(path string) error {
 	file, err := LoadFile(path)
+	if err != nil {
+		return err
+	}
+	nm.Files = append(nm.Files, file)
+	basePath := filepath.Dir(path)
+	for _, f := range file.Add {
+		err := nm.LoadMapping(basePath + "/" + f)
+		if err != nil {
+			return err
+		}
+	}
+
+	return nil
+}
+
+func NewNodeMapping() *NodeMapping {
+	return &NodeMapping{
+		Files: make(FileCollection, 0),
+	}
+}
+
+func LoadMapping(path string) (*NodeMapping, error) {
+	nm := NewNodeMapping()
+	err := nm.LoadMapping(path)
 	if err != nil {
 		return nil, err
 	}
-	files = append(files, file)
-	basePath := filepath.Dir(path)
-	for _, f := range file.Add {
-		additionalFile, err := LoadFile(basePath + "/" + f)
-		if err != nil {
-			return nil, err
-		}
-		files = append(files, additionalFile)
-	}
-
-	return &NodeMapping{
-		Files: files,
-	}, nil
+	return nm, nil
 }
 
 func (nm *NodeMapping) GenerateTree() *NodeTree {
