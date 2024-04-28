@@ -4,3 +4,6 @@ add:
 nodes:
 - id: 'node1'
   name: 'NodeExample'
+  edges:
+    - type: 'standart'
+      node: 'node2'
