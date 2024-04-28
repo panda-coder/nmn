@@ -1,0 +1,6 @@
+version: 0.1
+add:
+- "example4.nmn"
+nodes:
+- id: 'node4'
+  name: 'NodeExample'

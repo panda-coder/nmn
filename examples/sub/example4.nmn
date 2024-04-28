@@ -1,8 +1,6 @@
 version: 0.1
-add:
-- "sub/example3.nmn"
 nodes:
-- id: 'node2'
+- id: 'node5'
   name: 'NodeExample'
-- id: 'node3'
+- id: 'node6'
   name: 'NodeExample'

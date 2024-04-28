@@ -12,14 +12,15 @@ func TestLoadMapping(t *testing.T) {
 
 	assert.IsType(t, &nmn.NodeMapping{}, sut)
 	assert.NoError(t, err)
-	assert.Len(t, sut.Files, 2)
+	assert.Len(t, sut.Files, 4)
 }
 
 func TestGenerateTree(t *testing.T) {
 	sut, err := nmn.LoadMapping("examples/example1.nmn")
 	assert.NoError(t, err)
+
 	tree := sut.GenerateTree()
 
 	assert.IsType(t, &nmn.NodeTree{}, tree)
-	assert.Len(t, tree.Nodes, 3)
+	assert.Len(t, tree.Nodes, 6)
 }
